@@ -1,5 +1,5 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js';
-import { getDatabase, ref, set } from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js';
+import { getDatabase, ref, set, onValue } from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js';
 
 const firebaseApp = initializeApp({
     apiKey: "AIzaSyCez8AO3NPFkkCDxYYt-25x5KJai_CMpko",
@@ -30,4 +30,12 @@ set(ref(db, 'users/' + serial_number), {
 })
 document.getElementById("customer_registration").style.display = "none";
 document.getElementById('regbutton').style.display = "block";
+}
+document.getElementById('lbuttonfind').onclick = function(){
+    const db = getDatabase();
+    var last_name_find = document.getElementById("last_name_find").value;
+    onValue(ref(db, "users/" + "/last_name", (snapshot) =>{
+        const data = last_name_find;
+        
+    }))
 }
